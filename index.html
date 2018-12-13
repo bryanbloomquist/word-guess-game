@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <title>D&D Hangman</title>
+
+    </head>
+    <body>
+
+        <!-- Header -->
+        <div>
+            <h1>Let's Play Dungeon and Dragons Hangman</h1>
+            <h3>Press Any Key To Play</h3>
+        </div>
+
+        <div>
+            
+            <!-- display current word-->
+            <div>
+                <span id="wordSpan"></span>
+            </div>
+
+            <!-- game results/# of wins -->
+            <div> 
+                <strong>Number of Wins: </strong><span id="wins"></span>
+            </div>
+
+            <!-- game results/# of losses -->
+            <div> 
+                <strong>Number of Losses: </strong><span id="losses"></span>
+            </div>
+            
+            <!-- number of guesses remaining -->
+            <div> 
+                <strong>Number of Guesses Remaining: </strong><span id="guessesRemaining"></span>
+            </div>
+
+            <!-- letters already guessed -->
+            <div > 
+                <strong>Letters Already Guessed: </strong><span id="lettersUsed"></span>
+            </div>
+
+        </div>
+
+        <script src="assets/javascript/game.js"></script>
+        
+    </body>
+
+</html>
