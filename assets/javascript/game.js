@@ -6,7 +6,7 @@ var monsters = [
 
 
 //set variable to be filled later
-var level = 0;
+var level = 1;
 var health = 10;
 var guessesRemaining = 10;
 var lettersUsed = [];
@@ -70,11 +70,17 @@ function gameWin () {
         level++;
         reset ();
         document.getElementById("expLevel").innerHTML = +level;
-    //if they lost
-    } else if (guessesRemaining === 0) {
+    //if they lost but have more than 1 hit point remaining
+    } else if (guessesRemaining === 0 && health > 1) {
         health--;
         reset ();
         document.getElementById("healthPoints").innerHTML = +health;
+    // if they lost but have only 1 hit point
+    } else if (guessesRemaining === 0 && health === 1) {
+        health--;
+        document.getElementById("healthPoints").innerHTML = +health;
+        alert("You Died! Refresh Your Browser To Try Again!");
+
     //if the game continues
     }
     document.getElementById("wordSpan").innerHTML = " "+answerArray.join(" ");
@@ -94,3 +100,5 @@ document.onkeyup = function(event) {
     gameWin();
     document.getElementById("lettersGuessed").innerHTML = " " + lettersUsed.join("  ");
 }
+
+//game over

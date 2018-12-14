@@ -16,36 +16,47 @@
     <body>
 
         <!-- Header -->
-        <div>
-            <img src="assets/images/dndhangman.PNG" alt="DnD Hangman Logo">
+        <div class="container">
+            <img class="logo" src="assets/images/dndhangman.PNG" alt="DnD Hangman Logo">
             <h3>Press Any Key To Play</h3>
         </div>
 
-        <div>
+        <div class="container">
             
             <!-- display current word-->
-            <div>
-                <span id="wordSpan"></span>
+            <div class="md-container">
+                <h1><span id="wordSpan"></span></h1>
             </div>
 
-            <!-- game results/# of wins -->
-            <div> 
-                <strong>Exp. Level: </strong><span id="expLevel">0</span>
+            <div class="sm-container">
+
+                <!-- game results/# of wins -->
+                <div> 
+                    <strong>Exp. Level: </strong><span id="expLevel">1</span>
+                </div>
+
+                <!-- game results/# of losses -->
+                <div> 
+                    <strong>Hit Points: </strong><span id="healthPoints">10</span>
+                </div>
+                
+                <!-- number of guesses remaining -->
+                <div> 
+                    <strong>Number of Guesses Remaining: </strong><span id="guessesRemaining">10</span>
+                </div>
+
+                <!-- letters already guessed -->
+                <div > 
+                    <strong>Letters Already Guessed: </strong><span id="lettersGuessed"></span>
+                </div>
+
             </div>
 
-            <!-- game results/# of losses -->
-            <div> 
-                <strong>Health Points: </strong><span id="healthPoints">10</span>
-            </div>
-            
-            <!-- number of guesses remaining -->
-            <div> 
-                <strong>Number of Guesses Remaining: </strong><span id="guessesRemaining">10</span>
-            </div>
+            <div class="sm-container">
 
-            <!-- letters already guessed -->
-            <div > 
-                <strong>Letters Already Guessed: </strong><span id="lettersGuessed"></span>
+                <!-- display the creature to be guessed-->
+                <img id="monsterImage" src="#" alt="Random image of D&D monster">
+
             </div>
 
         </div>
