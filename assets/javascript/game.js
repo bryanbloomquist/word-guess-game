@@ -25,15 +25,20 @@ var guessesRemaining = 10;
 var lettersUsed = [];
 var answerArray = [];
 var currentOpacity = 0;
+var randomNumber = Math.floor(Math.random()*monsters.length);
+var word = monsters[randomNumber].name;
+var currentImage = monsters[randomNumber].image;
+console.log(word);
+
+
 
 
 //set the game function
 function game() {
-    //select random word from array
-    var randomNumber = Math.floor(Math.random()*monsters.length);
-    var word = monsters[randomNumber].name;
-    var currentImage = monsters[randomNumber].image;
-        console.log(word);
+    randomNumber = Math.floor(Math.random()*monsters.length);
+    word = monsters[randomNumber].name;
+    currentImage = monsters[randomNumber].image;
+
     //seperate random word into new array
     guessWord = word.split("");
         console.log(guessWord);
@@ -91,7 +96,7 @@ function gameWin () {
     //if they won
     if (guessWord.toString() === answerArray.toString ()) {
         level++;
-        // alert("You defeated the "+word+"! \n You gained 1 experience level! \n Press ENTER to keep playing.");
+        alert("You defeated the "+word+"! \n You gained 1 experience level! \n Press ENTER to keep playing.");
         reset();
         document.getElementById("expLevel").innerHTML = +level;
     //if they lost but have more than 1 hit point remaining
