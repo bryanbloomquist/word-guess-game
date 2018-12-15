@@ -24,6 +24,7 @@ var health = 10;
 var guessesRemaining = 10;
 var lettersUsed = [];
 var answerArray = [];
+var currentOpacity = 0;
 
 
 //set the game function
@@ -39,6 +40,8 @@ function game() {
     //create __ for each letter in array
     for (var i = 0; i < guessWord.length; i++) {
         answerArray.push("_");
+
+
     }
     //display the word to be guessed in html
     document.getElementById("wordSpan").innerHTML = answerArray.join("  ");
@@ -52,6 +55,7 @@ function reset () {
     monsterImage.style.opacity = 0;
     lettersUsed = [];
     answerArray = [];
+    currentOpacity = 0;
     game ();
 }
 
@@ -74,10 +78,10 @@ function checkGuess (letter) {
     }
     //if guess is not in the word
     else {
+        currentOpacity += .03
+        monsterImage.style.opacity = currentOpacity;
         lettersUsed.push(letter);
         guessesRemaining--;
-//ONLY WORKS ON THE FIRST MISS
-        monsterImage.style.opacity =+ .05;
     }
 }
 
@@ -87,11 +91,7 @@ function gameWin () {
     //if they won
     if (guessWord.toString() === answerArray.toString ()) {
         level++;
-        
-//DOESN"T WORK//monsterImage.style.opacity = 1;
-
-//DOESN"T WORK// alert("You defeated the "+word+"! \n You gained 1 experience level! \n Press ENTER to keep playing.");
-
+        // alert("You defeated the "+word+"! \n You gained 1 experience level! \n Press ENTER to keep playing.");
         reset();
         document.getElementById("expLevel").innerHTML = +level;
     //if they lost but have more than 1 hit point remaining
