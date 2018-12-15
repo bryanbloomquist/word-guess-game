@@ -1,7 +1,20 @@
 //set array of monsters
 var monsters = [
-    "beholder", "doppleganger", "dragon", "drider", "flumph", "githyanki", "gnoll",
-    "illithid", "lich", "mimic", "owlbear", "slaad", "troll", "vampire", "wraith"
+    {name: "beholder", image: "assets/images/beholder.png"},
+    {name: "doppleganger", image: "assets/images/doppleganger.jpg"},
+    {name: "dragon", image: "assets/images/dragon.jpeg"},
+    {name: "drider", image: "assets/images/drider.jpeg"},
+    {name: "flumph", image: "assets/images/flumph.jpeg"},
+    {name: "githyanki", image: "assets/images/githyanki.png"},
+    {name: "gnoll", image: "assets/images/gnoll.jpg"},
+    {name: "illithid", image: "assets/images/illithid.png"},
+    {name: "lich", image: "assets/images/lich.jpeg"},
+    {name: "mimic", image: "assets/images/mimic.jpeg"},
+    {name: "owlbear", image: "assets/images/owlbear.jpeg"},
+    {name: "slaad", image: "assets/images/slaad.jpg"},
+    {name: "troll", image: "assets/images/troll.jpeg"},
+    {name: "vampire", image: "assets/images/vampire.jpeg"},
+    {name: "wraith", image: "assets/images/wraith.jpeg"}
 ]
 
 
@@ -16,7 +29,9 @@ var answerArray = [];
 //set the game function
 function game() {
     //select random word from array
-    var word = monsters[Math.floor(Math.random()*monsters.length)];
+    var randomNumber = Math.floor(Math.random()*monsters.length);
+    var word = monsters[randomNumber].name;
+    var currentImage = monsters[randomNumber].image;
         console.log(word);
     //seperate random word into new array
     guessWord = word.split("");
@@ -27,12 +42,14 @@ function game() {
     }
     //display the word to be guessed in html
     document.getElementById("wordSpan").innerHTML = answerArray.join("  ");
+    document.getElementById("monsterImage").src = currentImage;
 }
 
 
 //set the reset function
 function reset () {
     guessesRemaining = 10;
+    monsterImage.style.opacity = 0;
     lettersUsed = [];
     answerArray = [];
     game ();
@@ -59,6 +76,8 @@ function checkGuess (letter) {
     else {
         lettersUsed.push(letter);
         guessesRemaining--;
+//ONLY WORKS ON THE FIRST MISS
+        monsterImage.style.opacity =+ .05;
     }
 }
 
@@ -68,7 +87,12 @@ function gameWin () {
     //if they won
     if (guessWord.toString() === answerArray.toString ()) {
         level++;
-        reset ();
+        
+//DOESN"T WORK//monsterImage.style.opacity = 1;
+
+//DOESN"T WORK// alert("You defeated the "+word+"! \n You gained 1 experience level! \n Press ENTER to keep playing.");
+
+        reset();
         document.getElementById("expLevel").innerHTML = +level;
     //if they lost but have more than 1 hit point remaining
     } else if (guessesRemaining === 0 && health > 1) {
@@ -80,7 +104,6 @@ function gameWin () {
         health--;
         document.getElementById("healthPoints").innerHTML = +health;
         alert("You Died! Refresh Your Browser To Try Again!");
-
     //if the game continues
     }
     document.getElementById("wordSpan").innerHTML = " "+answerArray.join(" ");
