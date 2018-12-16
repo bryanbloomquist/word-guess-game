@@ -17,7 +17,6 @@ var monsters = [
     {name: "wraith", image: "assets/images/wraith.jpeg"}
 ]
 
-
 //set variable to be filled later
 var level = 1;
 var health = 10;
@@ -28,31 +27,24 @@ var currentOpacity = 0;
 var randomNumber = Math.floor(Math.random()*monsters.length);
 var word = monsters[randomNumber].name;
 var currentImage = monsters[randomNumber].image;
-console.log(word);
-
-
-
 
 //set the game function
 function game() {
     randomNumber = Math.floor(Math.random()*monsters.length);
     word = monsters[randomNumber].name;
     currentImage = monsters[randomNumber].image;
-
+        console.log(word);
     //seperate random word into new array
     guessWord = word.split("");
         console.log(guessWord);
     //create __ for each letter in array
     for (var i = 0; i < guessWord.length; i++) {
         answerArray.push("_");
-
-
     }
     //display the word to be guessed in html
-    document.getElementById("wordSpan").innerHTML = answerArray.join("  ");
+    document.getElementById("wordSpan").innerHTML = answerArray.join(" ");
     document.getElementById("monsterImage").src = currentImage;
 }
-
 
 //set the reset function
 function reset () {
@@ -80,9 +72,7 @@ function checkGuess (letter) {
                 answerArray[i]=letter;
             }
         }
-    }
-    //if guess is not in the word
-    else {
+    } else {    //if guess is not in the word
         currentOpacity += .03
         monsterImage.style.opacity = currentOpacity;
         lettersUsed.push(letter);
@@ -90,17 +80,17 @@ function checkGuess (letter) {
     }
 }
 
-
 //check if the user won the game
 function gameWin () {
     //if they won
     if (guessWord.toString() === answerArray.toString ()) {
+        alert("You defeated the "+word+"! \n You gained 1 experience level! \n Press OK to keep exploring.");
         level++;
-        alert("You defeated the "+word+"! \n You gained 1 experience level! \n Press ENTER to keep playing.");
-        reset();
         document.getElementById("expLevel").innerHTML = +level;
+        reset();
     //if they lost but have more than 1 hit point remaining
     } else if (guessesRemaining === 0 && health > 1) {
+        alert("The "+word+" hit you! \n You lost 1 hit point! \n Press OK to keep exploring.");
         health--;
         reset ();
         document.getElementById("healthPoints").innerHTML = +health;
@@ -108,17 +98,16 @@ function gameWin () {
     } else if (guessesRemaining === 0 && health === 1) {
         health--;
         document.getElementById("healthPoints").innerHTML = +health;
-        alert("You Died! Refresh Your Browser To Try Again!");
+        document.getElementById("logo").src="assets/images/youdied.png";
+        document.getElementById("gameover").innerHTML = "Refresh Your Browser To Play Again.";
     //if the game continues
     }
     document.getElementById("wordSpan").innerHTML = " "+answerArray.join(" ");
     document.getElementById("guessesRemaining").innerHTML = guessesRemaining;
 }
 
-
 //run the game
 game ();
-
 
 //get the users guess
 document.onkeyup = function(event) {
@@ -128,5 +117,3 @@ document.onkeyup = function(event) {
     gameWin();
     document.getElementById("lettersGuessed").innerHTML = " " + lettersUsed.join("  ");
 }
-
-//game over
