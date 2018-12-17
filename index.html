@@ -15,57 +15,32 @@
     </head>
     <body>
 
-        <!-- Header -->
-        <div class="container">
+        <div class="container pad bor">
             <img id="logo" src="assets/images/dndhangman.PNG" alt="DnD Hangman Logo">
             <h3><span id="gameover">Press Any Key To Play</span></h3>
         </div>
 
-        <div class="container">
-            
-            <!-- display current word-->
-            <div class="md-container">
+        <div class="container pad bor">
+            <div class="md-container pad bor">
                 <h1><span id="wordSpan"></span></h1>
             </div>
-
-            <div class="sm-container">
-
-                <!-- game results/# of wins -->
-                <div> 
-                    <strong>Wins: </strong><span id="playerWins">0</span>
-                    <hr>
-                </div>
-
-                <!-- game results/# of losses -->
-                <div> 
-                    <strong>Losses: </strong><span id="playerLosses">0</span>
-                    <hr>
-                </div>
-                
-                <!-- number of guesses remaining -->
-                <div> 
-                    <strong>Guesses Remaining: </strong><span id="guessesRemaining">10</span>
-                    <hr>
-                </div>
-
-                <!-- letters already guessed -->
-                <div > 
-                    <strong>Letters Already Guessed:</strong><br><span id="lettersGuessed"></span>
-                </div>
-
+            <div class="sm-container pad bor">
+                <strong>Exp. Level: </strong><span id="expLevel">1</span>
+                <hr>
+                <strong>Hit Points: </strong><span id="healthPoints">10</span>
+                <hr>
+                <strong>Guesses Remaining: </strong><span id="guessesRemaining">10</span>
+                <hr>
+                <strong>Letters Guessed:</strong><br><span id="lettersGuessed">&gt;</span>
+                <hr>
+                <strong>Adventure Log:</strong><br><span id="adventure-log"></span>
             </div>
-
-            <div class="sm-container monstercage">
-
-                <!-- display the creature to be guessed-->
-                <img id="monsterImage" src="assets/images/dungeondoor.jpg" alt="Random image of D&D monster">
-
+            <div class="sm-container pad bor">
+                <img id="monsterImage" src="#" alt="Current monster">
             </div>
-
         </div>
 
         <script src="assets/javascript/game.js"></script>
         
     </body>
-
 </html>

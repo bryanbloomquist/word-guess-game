@@ -1,14 +1,29 @@
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
 body {
     background: #000;
     color: #f00;
     font-family: 'Courier New', Courier, monospace;
-    width: 500px;
+    width: 400px;
     margin: 0 auto;
 }
 
+.pad {
+    margin: 5px;
+    padding: 5px;
+}
+
+.bor {
+    border: 2px #f00 solid;
+}
+
 .container {
-    border: 3px #f00 solid;
-    margin-bottom: 20px;
+    width: 100%;
 }
 
 .container::after {
@@ -18,14 +33,30 @@ body {
     display: block;
 }
 
+.md-container {
+    width: 97%;
+}
+
+.sm-container {
+    float: left;
+    width: 97%;
+    line-height: 1;
+    height: 220px;
+}
+
+.img-container {
+    float: left;
+    width: 97%;
+    height: 220px;
+}
+
 #logo {
     width: 100%;
 }
 
 h1 {
     text-align: center;
-    font-size: 36px;
-    margin: 5px;
+    font-size: 24px;
 }
 
 h3 {
@@ -36,62 +67,52 @@ h3 {
 
 hr {
     background-color: #f00;
-    height: 3px;
+    height: 2px;
     border: 0;
-}
-
-.md-container {
-    border: 3px #f00 solid;
-    margin: 10px;
-    padding: 5px;
-}
-
-.sm-container {
-    align-content: center;
-    border: 3px #f00 solid;
-    width: 445px;
-    height: 210px;
-    float: left;
-    margin: 10px;
-    padding: 10px;
-    line-height: 2;
 }
 
 #monsterImage {
     display: block;
     margin: auto;
-    max-width: 310px;
-    max-height: 210px;
+    max-width: 100%;
+    max-height: 100%;
+    opacity: 0;
 }
 
-
-
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 600px) {
     body {
         margin: 20px auto;
         width: 600px;
+    }   
+    .pad {
+        margin-bottom: 10px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    .md-container {
+        width: 98%;
     }
     .sm-container {
-        width: 250px;
-        height: 300px;
-    }
-    #monsterImage {
-        max-width: 250px;
-        max-height: 300px;
+        width: 48%;
+        height: 340px;
+        line-height: 2;
     }
 }
 
 @media screen and (min-width: 768px) {
     body {
-        width: 720px;
-    }
+        width: 750px;
+    }     
     h1 {
-        font-size: 48px;
+        font-size: 36px;
+    }
+    .md-container {
+        width: 99%;
     }
     .sm-container {
-        width: 310px;
-    }
-    #monsterImage {
-        max-width: 310px;
+        width: 48.5%;
+        height: 340px;
+        line-height: 2;
     }
 }
