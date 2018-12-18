@@ -183,6 +183,8 @@ function gameWin () {
     //if they won
     if (guessWord.toString() === answerArray.toString ()) {
         document.getElementById("adventure-log").innerHTML = "You defeated the "+word+"!<br>You gained 1 Exp Level.<br>";
+        var audio = new Audio("victorybyte.wav");
+            audio.play();
         level++;
         document.getElementById("expLevel").innerHTML = +level;
         reset();
