@@ -1,9 +1,9 @@
 html {
     box-sizing: border-box;
-  }
+}
   *, *:before, *:after {
     box-sizing: inherit;
-  }
+}
 
 body {
     background: #000;
@@ -99,7 +99,7 @@ hr {
     }
     .sm-container {
         width: 48%;
-        height: 340px;
+        height: 370px;
         line-height: 2;
     }
 }
