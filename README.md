@@ -1,3 +1,5 @@
+Deployed Site => https://bryanbloomquist.github.io/word-guess-game/index.html
+
 Word Guess Game (Challenge - Recommended)
 
     Choose a theme for your game! You can choose any subject for your theme, though, so be creative!
