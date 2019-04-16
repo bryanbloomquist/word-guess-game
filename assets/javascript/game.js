@@ -1,5 +1,5 @@
 //define the array of monsters
-var monsters = [
+let monsters = [
     { name: "aboleth", image: "assets/images/aboleth.jpeg" },
     { name: "animated_armor", image: "assets/images/animatedArmor.jpg" },
     { name: "balor", image: "assets/images/balor.jpeg" },
@@ -102,30 +102,24 @@ var monsters = [
     { name: "zombie_wyvern", image: "assets/images/zombieWyvern.jpg" },
 ]
 
-
-
 //define valid keys for guesses
-var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-
-
+const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
 //set the initial variables for the games
-var wins = 0;
-var losses = 0;
-var level = 1;
-var health = 10;
-var guessesRemaining = 10;
-var lettersUsed = [">"];
-var answerArray = [];
-var currentOpacity = 0;
-var randomNumber = Math.floor(Math.random() * monsters.length);
-var word = monsters[randomNumber].name;
-var currentImage = monsters[randomNumber].image;
+let wins = 0;
+let losses = 0;
+let level = 1;
+let health = 10;
+let guessesRemaining = 10;
+let lettersUsed = [">"];
+let answerArray = [];
+let currentOpacity = 0;
+let randomNumber = Math.floor(Math.random() * monsters.length);
+let word = monsters[randomNumber].name;
+let currentImage = monsters[randomNumber].image;
 
-
-
-function shuffle(array){
-    var currentIndex = array.length, temporaryValue, randomIndex;
+const shuffle = (array) => {
+    let currentIndex = array.length, temporaryValue, randomIndex;
     while (0 !== currentIndex){
         randomIndex = Math.floor(Math.random()*currentIndex);
         currentIndex -= 1;
@@ -135,29 +129,31 @@ function shuffle(array){
     }
     return array;
 }
+
 monsters = shuffle(monsters);
 
-
 //set the game function
-function game() {
-    var x = wins + losses;
+const game = () => {
+    let x = wins + losses;
     word = monsters[x].name;
     currentImage = monsters[x].image;
     //seperate random word into new array
     guessWord = word.split("");
     //create __ for each letter in array
-    for (var i = 0; i < guessWord.length; i++) {
-        answerArray.push("_");
+    for (let i = 0; i < guessWord.length; i++) {
+        if (answerArray[i] === " "){
+            answerArray.push(" ");
+        } else {
+            answerArray.push("_")
+        }
     }
     //display the word to be guessed in html
     document.getElementById("wordSpan").innerHTML = answerArray.join(" ");
     document.getElementById("monsterImage").src = currentImage;
 }
 
-
-
 //set the reset function
-function reset() {
+const reset = () => {
     guessesRemaining = 10;
     monsterImage.style.opacity = 0;
     lettersUsed = [">"];
@@ -166,12 +162,10 @@ function reset() {
     game();
 }
 
-
-
 //check the users guess with the words in the array
-function checkGuess(letter) {
-    var letterMatch = false;
-    for (var i = 0; i < guessWord.length; i++) {
+const checkGuess = (letter) => {
+    let letterMatch = false;
+    for (let i = 0; i < guessWord.length; i++) {
         if (guessWord[i] === letter) {
             letterMatch = true;
         }
@@ -198,12 +192,12 @@ function checkGuess(letter) {
 
 
 //check if the user won the game
-function gameWin() {
-    var y = wins + losses;
+const gameWin = () => {
+    let y = wins + losses;
     //if they won
     if (guessWord.toString() === answerArray.toString() && y < monsters.length-1) {
         document.getElementById("adventure-log").innerHTML = "You defeated the " + word + "!<br>You gained 1 Exp Level.<br>";
-        var audio = document.createElement("audio");
+        let audio = document.createElement("audio");
         audio.setAttribute("src", "assets/victorybyte.wav");
         audio.play();
         level++;
@@ -213,7 +207,7 @@ function gameWin() {
         //if they lost but have more than 1 hit point remaining
     } else if (guessesRemaining === 0 && health > 1) {
         document.getElementById("adventure-log").innerHTML = "The " + word + " hit you!<br>You lost 1 Hit Point.";
-        var audio = document.createElement("audio");
+        let audio = document.createElement("audio");
         audio.setAttribute("src", "assets/wilhelmscream.wav");
         audio.play();
         health--;
@@ -222,7 +216,7 @@ function gameWin() {
         reset();
         //if they won and they cleared the whole array
     } else if (guessWord.toString() === answerArray.toString() && y === monsters.length-1) {
-        var audio = document.createElement("audio");
+        let audio = document.createElement("audio");
         audio.setAttribute("src", "assets/gamewin.wav");
         audio.play();
         level++;
@@ -242,7 +236,7 @@ function gameWin() {
         document.getElementById("monsterImage").src = "assets/images/critFail.jpg";
         document.getElementById("gameover").innerHTML = "Refresh Your Browser To Play Again.";
         document.getElementById("adventure-log").innerHTML = "You Died! <br> Refresh Your Broswer To Play Again.";
-        var audio = document.createElement("audio");
+        let audio = document.createElement("audio");
         audio.setAttribute("src", "assets/wilhelmscream.wav");
         audio.play();
         //if they neither won nor lost and the game continues
@@ -251,16 +245,12 @@ function gameWin() {
     document.getElementById("guessesRemaining").innerHTML = guessesRemaining;
 }
 
-
-
 //run the game
 game();
 
-
-
 //get the users guess
-document.onkeyup = function (event) {
-    var guess = event.key;
+document.onkeyup = (event) => {
+    let guess = event.key;
     guess = guess.toLowerCase();
     if (alphabet.includes(guess)) {
         console.log(guess);
