@@ -103,7 +103,7 @@ let monsters = [
 ]
 
 //define valid keys for guesses
-const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 //set the initial variables for the games
 let wins = 0;
@@ -120,11 +120,11 @@ let currentImage = monsters[randomNumber].image;
 
 const shuffle = (array) => {
     let currentIndex = array.length, temporaryValue, randomIndex;
-    while (0 !== currentIndex){
-        randomIndex = Math.floor(Math.random()*currentIndex);
+    while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
         temporaryValue = array[currentIndex];
-        array[currentIndex] = array [randomIndex];
+        array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
     return array;
@@ -141,7 +141,7 @@ const game = () => {
     guessWord = word.split("");
     //create __ for each letter in array
     for (let i = 0; i < guessWord.length; i++) {
-        if (answerArray[i] === " "){
+        if (answerArray[i] === " ") {
             answerArray.push(" ");
         } else {
             answerArray.push("_")
@@ -195,7 +195,7 @@ const checkGuess = (letter) => {
 const gameWin = () => {
     let y = wins + losses;
     //if they won
-    if (guessWord.toString() === answerArray.toString() && y < monsters.length-1) {
+    if (guessWord.toString() === answerArray.toString() && y < monsters.length - 1) {
         document.getElementById("adventure-log").innerHTML = "You defeated the " + word + "!<br>You gained 1 Exp Level.<br>";
         let audio = document.createElement("audio");
         audio.setAttribute("src", "assets/victorybyte.wav");
@@ -204,7 +204,7 @@ const gameWin = () => {
         wins++;
         document.getElementById("expLevel").innerHTML = +level;
         reset();
-        //if they lost but have more than 1 hit point remaining
+    //if they lost but have more than 1 hit point remaining
     } else if (guessesRemaining === 0 && health > 1) {
         document.getElementById("adventure-log").innerHTML = "The " + word + " hit you!<br>You lost 1 Hit Point.";
         let audio = document.createElement("audio");
@@ -214,21 +214,21 @@ const gameWin = () => {
         losses++;
         document.getElementById("healthPoints").innerHTML = +health;
         reset();
-        //if they won and they cleared the whole array
-    } else if (guessWord.toString() === answerArray.toString() && y === monsters.length-1) {
+    //if they won and they cleared the whole array
+    } else if (guessWord.toString() === answerArray.toString() && y === monsters.length - 1) {
         let audio = document.createElement("audio");
         audio.setAttribute("src", "assets/gamewin.wav");
         audio.play();
         level++;
         wins++;
         document.getElementById("expLevel").innerHTML = +level;
-        currentOpacity =1;
+        currentOpacity = 1;
         monsterImage.style.opacity = currentOpacity;
         document.getElementById("logo").src = "assets/images/youwon.png";
         document.getElementById("monsterImage").src = "assets/images/critwin.jpg";
         document.getElementById("gameover").innerHTML = "Refresh Your Browser To Play Again.";
         document.getElementById("adventure-log").innerHTML = "You Won All Of D&D! <br> Refresh Your Broswer To Play Again.";
-        // if they lost but have only 1 hit point
+    // if they lost but have only 1 hit point
     } else if (guessesRemaining === 0 && health === 1) {
         health--;
         document.getElementById("healthPoints").innerHTML = +health;
@@ -239,7 +239,7 @@ const gameWin = () => {
         let audio = document.createElement("audio");
         audio.setAttribute("src", "assets/wilhelmscream.wav");
         audio.play();
-        //if they neither won nor lost and the game continues
+    //if they neither won nor lost and the game continues
     }
     document.getElementById("wordSpan").innerHTML = " " + answerArray.join(" ");
     document.getElementById("guessesRemaining").innerHTML = guessesRemaining;
