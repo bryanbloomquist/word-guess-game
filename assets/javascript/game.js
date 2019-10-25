@@ -105,7 +105,7 @@ let level = 1;
 let health = 1;
 let guessesRemaining = 10;
 let lettersGuessed = [">"];
-let index = 99;
+let index = 0;
 let currentWord;
 let currentImage;
 let answerArray = [];
@@ -194,7 +194,7 @@ const validateLetter = ( guess ) => { //checks to see if the letter is in the wo
 	}
 };
 
-const sufferWound = () => { 
+const sufferWound = () => {
 	if ( guessesRemaining === 0 ) {
 		chat.innerHTML = "The " + currentWord + " hit you! <br> You lost 1 Hit Point.";
 		audio.setAttribute( "src", "assets/wilhelmscream.wav" );
