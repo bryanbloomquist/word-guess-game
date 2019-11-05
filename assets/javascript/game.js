@@ -102,7 +102,7 @@ let monsters = [
 ]
 
 let level = 1;
-let health = 1;
+let health = 10;
 let guessesRemaining = 10;
 let lettersGuessed = [">"];
 let index = 0;
